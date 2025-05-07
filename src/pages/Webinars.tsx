@@ -18,7 +18,7 @@ interface Webinar {
   image: string;
   topics: string[];
 }
-
+const mobileNumber = '+919876543210';
 interface Category {
   id: string;
   name: string;
@@ -158,7 +158,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ quote, name, role, av
   </motion.div>
 );
 
-const WebinarCard: React.FC<WebinarCardProps> = ({ webinar, expanded, onClick }) => (
+const WebinarCard: React.FC<WebinarCardProps> = ({ webinar, expanded, onClick } ) => (
   <motion.div
     className={`overflow-hidden rounded-xl border ${expanded ? 'border-purple-500' : 'border-gray-800'} bg-gray-900/50 backdrop-blur-sm`}
     layout
@@ -182,7 +182,7 @@ const WebinarCard: React.FC<WebinarCardProps> = ({ webinar, expanded, onClick })
       </div>
       {webinar.recordingAvailable && (
         <div className="absolute top-4 right-4 bg-purple-600 text-white text-xs px-2 py-1 rounded-full">
-          Recording Available
+
         </div>
       )}
     </div>
@@ -222,9 +222,7 @@ const WebinarCard: React.FC<WebinarCardProps> = ({ webinar, expanded, onClick })
         >
           {expanded ? 'Show Less' : 'Learn More'}
         </button>
-        <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-          {webinar.recordingAvailable ? 'Watch Now' : 'Register Now'}
-        </button>
+        
       </div>
 
       {expanded && (
@@ -308,14 +306,11 @@ const WebinarsPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex justify-center gap-4"
             >
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center" onClick={() => window.open('https://www.linkedin.com/company/cubeesec-securities/posts/?feedView=all', '_blank')}>
                 <Rocket className="w-5 h-5 mr-2" />
                 Join Our Community
               </button>
-              <button className="bg-transparent border border-purple-500 text-purple-400 hover:bg-purple-500/10 px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
-                <Video className="w-5 h-5 mr-2" />
-                Explore Webinars
-              </button>
+              
             </motion.div>
           </motion.div>
         </div>
@@ -533,7 +528,7 @@ const WebinarsPage: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-4 bg-black relative overflow-hidden">
+      {/* <section className="py-24 px-4 bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10" />
         <div className="max-w-4xl mx-auto relative z-10 text-center">
           <motion.div
@@ -574,7 +569,7 @@ const WebinarsPage: React.FC = () => {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

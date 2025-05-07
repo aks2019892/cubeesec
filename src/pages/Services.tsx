@@ -269,7 +269,7 @@ const VulnerabilitySection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Vulnerability and Penetration Testing
+          Vulnerability Assesment and Penetration Testing
         </motion.h2>
 
         <div className="flex flex-col md:flex-row gap-8">

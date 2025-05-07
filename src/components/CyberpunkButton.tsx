@@ -24,6 +24,15 @@ const CyberPunkButton = ({
       clipPath: "polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)",
       glow: "0 0 15px rgba(168, 85, 247, 0)"
     },
+    primary2: {
+      bg: "bg-gradient-to-br from-blue-500 to-purple-600",
+      border: "border-blue-400",
+      text: "text-white-300",
+      hoverText: "text-blue-300",
+      hoverBorder: "border-blue-300",
+      clipPath: "polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)",
+      glow: "0 0 15px rgba(96, 165, 250, 0)" // Using blue-400 rgba value
+    },
     secondary: {
       bg: "bg-gradient-to-br from-white-700 to-white-900",
       border: "border-gray-400",

@@ -1,4 +1,4 @@
-import { Github, LucideInstagram, Linkedin, Mail } from 'lucide-react';
+import { Github, LucideInstagram, Linkedin, Mail, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Footer = () => {
@@ -15,17 +15,17 @@ export const Footer = () => {
               Protecting your digital assets with cutting-edge cybersecurity solutions.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.instagram.com/cubeesec/" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://www.instagram.com/cubeesec/" className="text-gray-400 hover:text-cyan-400 transition-colors" target='_blank'>
                 <LucideInstagram className="w-5 h-5" />
               </a>
               <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                <Github className="w-5 h-5" />
+                <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/company/cubeesec-securities/posts/?feedView=all" className="text-gray-400 hover:text-cyan-400 transition-colors">
+              <a href="https://www.linkedin.com/company/cubeesec-securities/posts/?feedView=all" className="text-gray-400 hover:text-cyan-400 transition-colors" target='_blank'>
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@cubeesec.com&su=Subject%20Here&body=Hello%20Cubeesec!"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=cubeesec.group@gmail.com&su=Subject%20Here&body=Hello%20Cubeesec!"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-cyan-400 transition-colors"
@@ -61,10 +61,11 @@ export const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>123 Cyber Street</li>
-              <li>Security Valley, CV 12345</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Email: info@cubeesec.com</li>
+              <li>GN Krishna Nagar,</li>
+              <li>Pongupalayam, Kanalampalayam</li>
+              <li>Tirupur</li>
+              <li>Phone: 8790407216</li>
+              <li>Email: cubeesec.group@gmail.com</li>
             </ul>
           </div>
         </div>

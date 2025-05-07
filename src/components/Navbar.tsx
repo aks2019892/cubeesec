@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Shield, Hexagon, Network, Code2, Server, Lock, ShieldCheck, ShipWheelIcon } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import logo from '../images/logo.png';
+
 
 const navItems = {
   Corporate: [
@@ -28,6 +30,7 @@ const categoryIcons = {
 };
 
 export const Navbar = () => {
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,6 +53,20 @@ export const Navbar = () => {
     return `/${category.toLowerCase()}/${item.toLowerCase().replace(/\s+/g, '-')}`;
   };
 
+  // Check if a nav item is active
+  const isActive = (path: string) => {
+    return location.pathname === path || 
+           location.pathname.startsWith(`${path}/`) ||
+           location.pathname === `/${path.toLowerCase().replace(/\s+/g, '-')}`;
+  };
+
+  // Check if a dropdown item is active
+  const isDropdownItemActive = (category: string, item: string) => {
+    const itemPath = getDropdownPath(category, item);
+    return location.pathname === itemPath || 
+           location.pathname.startsWith(`${itemPath}/`);
+  };
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'backdrop-blur-md bg-gray-900/80 border-b border-purple-500/20' : 'bg-black'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +77,7 @@ export const Navbar = () => {
               transition={{ duration: 1 }}
               className="p-1 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 shadow-lg shadow-purple-500/30"
             >
-              <Shield className="w-8 h-8 text-white" />
+              <img src={logo} className="w-8 h-8 text-white" />
             </motion.div>
             <motion.span 
               initial={{ opacity: 0, x: -10 }}
@@ -88,6 +105,14 @@ export const Navbar = () => {
                         {categoryIcons[key as keyof typeof categoryIcons]}
                         <span>{key}</span>
                       </span>
+                      {navItems[key as keyof typeof navItems].some(item => 
+                        isDropdownItemActive(key, item.name)
+                      ) && (
+                        <motion.span 
+                          layoutId="desktopNavUnderline"
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-cyan-400"
+                        />
+                      )}
                     </button>
 
                     <AnimatePresence>
@@ -110,18 +135,30 @@ export const Navbar = () => {
                                 key={name}
                                 to={getDropdownPath(key, name)}
                                 onClick={() => setActiveDropdown(null)}
-                                className="group flex items-start gap-3 px-4 py-3 rounded-md hover:bg-purple-900/40 transition-all duration-200 relative"
+                                className={`group flex items-start gap-3 px-4 py-3 rounded-md hover:bg-purple-900/40 transition-all duration-200 relative ${
+                                  isDropdownItemActive(key, name) ? 'bg-purple-900/30' : ''
+                                }`}
                                 onMouseEnter={() => setHoveredItem(name)}
                                 onMouseLeave={() => setHoveredItem(null)}
                               >
                                 <motion.div 
                                   whileHover={{ scale: 1.1 }}
-                                  className="p-1.5 bg-purple-900/50 rounded-md"
+                                  className={`p-1.5 rounded-md ${
+                                    isDropdownItemActive(key, name) 
+                                      ? 'bg-cyan-400/20' 
+                                      : 'bg-purple-900/50'
+                                  }`}
                                 >
                                   {icon}
                                 </motion.div>
                                 <div>
-                                  <span className="text-white group-hover:text-cyan-300 transition-colors font-medium">{name}</span>
+                                  <span className={`${
+                                    isDropdownItemActive(key, name)
+                                      ? 'text-cyan-300'
+                                      : 'text-white group-hover:text-cyan-300'
+                                  } transition-colors font-medium`}>
+                                    {name}
+                                  </span>
                                   <AnimatePresence>
                                     {hoveredItem === name && (
                                       <motion.p 
@@ -135,7 +172,9 @@ export const Navbar = () => {
                                     )}
                                   </AnimatePresence>
                                 </div>
-                                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                {isDropdownItemActive(key, name) && (
+                                  <div className="absolute bottom-0 left-0 right-0 h-px bg-cyan-400"></div>
+                                )}
                               </Link>
                             ))}
                           </div>
@@ -146,12 +185,20 @@ export const Navbar = () => {
                 ) : (
                   <Link
                     to={`/${key.toLowerCase().replace(/\s+/g, '-')}`}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-md transition-all ${isScrolled ? 'text-white hover:text-cyan-300' : 'text-white hover:text-cyan-300'} group relative`}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-md transition-all ${
+                      isScrolled ? 'text-white hover:text-cyan-300' : 'text-white hover:text-cyan-300'
+                    } group relative`}
                   >
                     <span className="flex items-center gap-2">
                       {categoryIcons[key as keyof typeof categoryIcons]}
                       <span>{key}</span>
                     </span>
+                    {isActive(`/${key.toLowerCase().replace(/\s+/g, '-')}`) && (
+                      <motion.span 
+                        layoutId="desktopNavUnderline"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-cyan-400"
+                      />
+                    )}
                   </Link>
                 )}
               </div>
@@ -162,7 +209,9 @@ export const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`inline-flex items-center justify-center p-2 rounded-md ${isScrolled ? 'text-purple-400 hover:text-white' : 'text-white hover:text-cyan-300'} hover:bg-purple-900/30 focus:outline-none transition-all`}
+              className={`inline-flex items-center justify-center p-2 rounded-md ${
+                isScrolled ? 'text-purple-400 hover:text-white' : 'text-white hover:text-cyan-300'
+              } hover:bg-purple-900/30 focus:outline-none transition-all`}
             >
               {isMobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -190,7 +239,11 @@ export const Navbar = () => {
                   {items.length > 0 ? (
                     <>
                       <button
-                        className={`w-full text-left px-3 py-3 text-base font-medium flex items-center justify-between rounded-lg text-white hover:bg-purple-900/40 transition-all`}
+                        className={`w-full text-left px-3 py-3 text-base font-medium flex items-center justify-between rounded-lg ${
+                          isActive(`/${key.toLowerCase().replace(/\s+/g, '-')}`)
+                            ? 'text-cyan-300 bg-purple-900/40'
+                            : 'text-white hover:bg-purple-900/40'
+                        } transition-all`}
                         onClick={() => handleDropdownClick(key)}
                       >
                         <div className="flex items-center gap-3">
@@ -220,15 +273,26 @@ export const Navbar = () => {
                                   setActiveDropdown(null);
                                   setIsMobileMenuOpen(false);
                                 }}
-                                className={`block px-3 py-2.5 rounded-md flex items-center gap-3 text-gray-300 hover:text-cyan-300 hover:bg-purple-900/40 transition-all`}
+                                className={`block px-3 py-2.5 rounded-md flex items-center gap-3 ${
+                                  isDropdownItemActive(key, name)
+                                    ? 'text-cyan-300 bg-purple-900/40'
+                                    : 'text-gray-300 hover:text-cyan-300 hover:bg-purple-900/40'
+                                } transition-all`}
                               >
-                                <div className="p-1 bg-purple-900/50 rounded-md">
+                                <div className={`p-1 rounded-md ${
+                                  isDropdownItemActive(key, name)
+                                    ? 'bg-cyan-400/20'
+                                    : 'bg-purple-900/50'
+                                }`}>
                                   {icon}
                                 </div>
                                 <div>
                                   <span className="block">{name}</span>
                                   <p className="text-xs text-gray-400 mt-1">{description}</p>
                                 </div>
+                                {isDropdownItemActive(key, name) && (
+                                  <div className="ml-auto w-1 h-6 bg-cyan-400 rounded-full"></div>
+                                )}
                               </Link>
                             ))}
                           </motion.div>
@@ -239,10 +303,17 @@ export const Navbar = () => {
                     <Link
                       to={`/${key.toLowerCase().replace(/\s+/g, '-')}`}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`w-full text-left px-3 py-3 text-base font-medium flex items-center gap-3 rounded-lg text-white hover:bg-purple-900/40 transition-all`}
+                      className={`w-full text-left px-3 py-3 text-base font-medium flex items-center gap-3 rounded-lg ${
+                        isActive(`/${key.toLowerCase().replace(/\s+/g, '-')}`)
+                          ? 'text-cyan-300 bg-purple-900/40'
+                          : 'text-white hover:bg-purple-900/40'
+                      } transition-all`}
                     >
                       {categoryIcons[key as keyof typeof categoryIcons]}
                       <span>{key}</span>
+                      {isActive(`/${key.toLowerCase().replace(/\s+/g, '-')}`) && (
+                        <div className="ml-auto w-1 h-6 bg-cyan-400 rounded-full"></div>
+                      )}
                     </Link>
                   )}
                 </div>

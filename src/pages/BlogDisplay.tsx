@@ -1,7 +1,7 @@
 import { Hammer, Settings } from 'lucide-react';
 const BlogDisplay = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white px-4 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-black text-white px-4 relative overflow-hidden">
       {/* Spinning Gear Background */}
       <Settings className="absolute top-10 left-10 w-24 h-24 text-blue-400 animate-spin-slow opacity-100" />
       <Settings className="absolute bottom-10 right-10 w-32 h-32 text-purple-700 animate-spin-slow opacity-100" />

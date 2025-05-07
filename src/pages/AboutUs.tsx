@@ -70,7 +70,7 @@ const AboutUs = () => {
                 }}
               >
                 <span className="text-white">About</span>{' '}
-                <span className="text-violet-400">CyberShield</span>
+                <span className="text-violet-400">CUBeeSEC</span>
               </motion.h1>
               
               <motion.p 
@@ -126,7 +126,7 @@ const AboutUs = () => {
                 {/* Main image */}
                 <motion.img
                   src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
-                  alt="CyberShield Security"
+                  alt="CUBeeSEC groups"
                   className="rounded-xl shadow-2xl border border-gray-700 w-full h-[500px] object-cover"
                   initial={{ rotate: -1 }}
                   animate={{ rotate: 1 }}

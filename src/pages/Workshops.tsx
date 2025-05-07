@@ -279,9 +279,9 @@ const WorkshopCard: React.FC<WorkshopCardProps> = ({ workshop, expanded, onClick
         >
           {expanded ? 'Show Less' : 'Learn More'}
         </button>
-        <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+        {/* <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
           {workshop.attendees > 0 ? 'Join Waitlist' : 'Register Now'}
-        </button>
+        </button> */}
       </div>
 
       {expanded && (
@@ -340,7 +340,12 @@ const WorkshopsPage: React.FC = () => {
   const toggleWorkshop = (id: number) => {
     setExpandedWorkshop(expandedWorkshop === id ? null : id);
   };
-
+  const handleExploreWorkshopsClick = () => {
+    const workshopsSection = document.getElementById('workshops-grid');
+    if (workshopsSection) {
+      workshopsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
@@ -387,14 +392,17 @@ const WorkshopsPage: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex justify-center gap-4"
             >
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center" onClick={() => { window.location.href = 'https://www.linkedin.com/company/cubeesec-securities' ; }}>
                 <Rocket className="w-5 h-5 mr-2" />
-                Join Our Labs
+                Join Us
               </button>
-              <button className="bg-transparent border border-purple-500 text-purple-400 hover:bg-purple-500/10 px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
-                <FlaskConical className="w-5 h-5 mr-2" />
-                Explore Workshops
-              </button>
+              <button
+      className="bg-transparent border border-purple-500 text-purple-400 hover:bg-purple-500/10 px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
+      onClick={handleExploreWorkshopsClick}
+    >
+      <FlaskConical className="w-5 h-5 mr-2" />
+      Explore Workshops
+    </button>
             </motion.div>
           </motion.div>
         </div>
@@ -562,7 +570,7 @@ const WorkshopsPage: React.FC = () => {
       </section>
 
       {/* Workshops Grid */}
-      <section className="py-16 px-4">
+      <section id="workshops-grid" className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
             className="text-3xl font-bold mb-12 text-center"
@@ -660,14 +668,14 @@ const WorkshopsPage: React.FC = () => {
               Join our hands-on workshops and gain the practical skills employers are looking for.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+              {/* <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
                 <FlaskConical className="w-5 h-5 mr-2" />
                 VIEW WORKSHOP SCHEDULE
               </button>
               <button className="bg-transparent border border-purple-500 text-purple-400 hover:bg-purple-500/10 px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5 mr-2" />
                 ENTER PRACTICE LABS
-              </button>
+              </button> */}
             </div>
           </motion.div>
         </div>

@@ -53,7 +53,7 @@ export const Footer = () => {
             <ul className="space-y-2">
               <li><p className="text-gray-400 ">Security Audit</p></li>
               <li><p className="text-gray-400 ">Penetration Testing</p></li>
-              <li><p className="text-gray-400 ">Incident Response</p></li>
+              <li><p className="text-gray-400 ">Physcial Security Simulation</p></li>
               <li><p className="text-gray-400 ">Security Training</p></li>
             </ul>
           </div>

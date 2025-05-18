@@ -8,33 +8,33 @@ const AboutUs = () => {
   const features = [
     {
       icon: Shield,
-      title: "Advanced Protection",
-      description: "Military-grade encryption and threat detection systems"
+      title: "Web Application Penetration Testing,",
+      description: "Detect flaws in web-based systems."
     },
     {
       icon: Lock,
-      title: "Data Security",
-      description: "End-to-end encryption for all your sensitive information"
+      title: "AI Penetration Testing",
+      description: "Secure AI models from manipulation."
     },
     {
       icon: Server,
-      title: "Cloud Defense",
-      description: "Comprehensive protection for cloud infrastructure"
+      title: "Network Penetration Testing",
+      description: "Uncover vulnerabilities in network infrastructure."
     },
     {
       icon: Globe,
-      title: "Global Network",
-      description: "24/7 monitoring across all time zones"
+      title: "Active Directory Penetration Testing",
+      description: "Test domain security and access control."
     },
     {
       icon: Code,
-      title: "Secure Development",
-      description: "Security-first approach to software development"
+      title: "Wi-Fi Penetration Testing",
+      description: "Identify wireless network attack vectors."
     },
     {
       icon: Cpu,
-      title: "AI-Powered",
-      description: "Machine learning for proactive threat detection"
+      title: " Physcial Security Testing",
+      description: "Simulate real-world physical security breaches."
     }
   ];
 
@@ -79,7 +79,10 @@ const AboutUs = () => {
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.3 }}
               >
-                We are a team of cybersecurity experts dedicated to protecting your digital assets from modern threats. Founded in 2015, we've grown to become a trusted partner for businesses worldwide.
+                CUBeeSEC isn’t just a cybersecurity company — we think like attackers, act like partners, and secure like pros.
+                <br></br>
+                <br></br>
+                We break what others miss. We secure what matters.
               </motion.p>
               
               <div className="flex flex-wrap gap-4">
@@ -315,7 +318,7 @@ const AboutUs = () => {
 </section>
 
       {/* Advisors Section */}
-      <section className="py-24 relative overflow-hidden border-t border-gray-800 bg-gray-900/50">
+      {/* <section className="py-24 relative overflow-hidden border-t border-gray-800 bg-gray-900/50">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -382,7 +385,7 @@ const AboutUs = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Insights Section */}
       <section className="py-24 relative overflow-hidden border-t border-gray-800">

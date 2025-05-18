@@ -13,23 +13,23 @@ const fontStyle = {
 const services = [
   {
     icon: Shield,
-    title: 'Network Security',
-    description: 'Protect your network infrastructure with our advanced security solutions.'
+    title: 'Proven Expertise',
+    description: 'Tested 100+ applications. We break, secure, and innovate faster.'
   },
   {
     icon: Lock,
-    title: 'Security Assessment',
-    description: 'Proactively identify weaknesses and vulnerabilities in your systems to fortify your defenses against potential threats.'
+    title: 'Client-Centric Approach',
+    description: 'Web, mobile, network, APIs—secured from surface to core.'
   },
   {
     icon: Server,
-    title: 'Cloud Security',
+    title: 'Continuous Support',
     description: 'Secure your cloud infrastructure against modern threats.'
   },
   {
     icon: Users,
     title: 'Security Training',
-    description: 'Empower your team with cybersecurity best practices.'
+    description: 'Beyond testing. We guide remediation, updates, and security growth.'
   }
 ];
 

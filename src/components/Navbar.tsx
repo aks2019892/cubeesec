@@ -75,9 +75,9 @@ export const Navbar = () => {
             <motion.div
               whileHover={{ rotate: 360 }}
               transition={{ duration: 1 }}
-              className="p-1 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 shadow-lg shadow-purple-500/30"
+              className="p-1 rounded-full bg-black"
             >
-              <img src={logo} className="w-8 h-8 text-white" />
+              <img src={logo} className="w-12 h-12 text-white" />
             </motion.div>
             <motion.span 
               initial={{ opacity: 0, x: -10 }}
